@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>За пределами возможного — Год белорусской женщины</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        portalBg: '#f8fafc',
+                        portalCard: '#ffffff',
+                        portalDark: '#1e293b',
+                        portalPrimary: '#1d4ed8',
+                        portalRed: '#b91c1c',
+                        portalGreen: '#15803d',
+                        portalGold: '#b45309'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .modal-backdrop {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Header & Portal Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Portal Brand / Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-700 to-red-600 flex items-center justify-center shadow-md text-white font-bold">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] tracking-wider uppercase text-slate-500 font-semibold block">Республиканский просветительский портал</span>
+                        <span class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Год белорусской женщины</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="switchPage('home')" id="nav-home" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-blue-700 bg-blue-50">Главная</button>
+                    <button onclick="switchPage('timeline')" id="nav-timeline" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">Они были первыми</button>
+                    <button onclick="switchPage('modern')" id="nav-modern" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">Героини рядом</button>
+                    <button onclick="switchPage('quiz')" id="nav-quiz" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">Квиз</button>
+                    <button onclick="switchPage('project')" id="nav-project" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">О проекте</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-blue-700 bg-blue-50">Главная</button>
+            <button onclick="switchPage('timeline'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">Они были первыми</button>
+            <button onclick="switchPage('modern'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">Героини рядом</button>
+            <button onclick="switchPage('quiz'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">Квиз</button>
+            <button onclick="switchPage('project'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">О проекте</button>
+        </div>
+    </header>
+
+    <!-- Main Content Dynamic Views Container -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <div id="page-home" class="page-view">
+            <section class="py-16 lg:py-24 bg-gradient-to-b from-blue-900 via-slate-900 to-slate-900 text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-4xl mx-auto">
+                        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-600/30 border border-blue-400/40 text-blue-200 text-xs font-semibold tracking-wide uppercase mb-6">
+                            <i class="fa-solid fa-star text-amber-400"></i>
+                            <span>Год белорусской женщины • Республиканский просветительский проект</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+                            За пределами <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">возможного</span>
+                        </h1>
+                        <p class="text-base sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-3xl mx-auto">
+                            Проект посвящен выдающейся роли белорусских женщин в истории, науке, культуре, спорте и развитии регионов. Истории стойкости, интеллектуального подвижничества и духовной силы, формирующие облик современной Беларуси.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <button onclick="switchPage('timeline')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold shadow-lg shadow-blue-600/30 hover:opacity-95 transition-all flex items-center justify-center space-x-2">
+                                <span>Перейти к истории</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button onclick="switchPage('modern')" class="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center justify-center space-x-2">
+                                <span>Героини регионов</span>
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Regions Panel -->
+            <section class="py-16 sm:py-24 bg-white border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-xs uppercase tracking-widest text-blue-700 font-semibold block mb-2">Региональный обзор</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Регионы Беларуси и Наровлянский край</h2>
+                        <p class="text-slate-600 text-sm sm:text-base">
+                            Выберите интересующий вас регион или город ниже, чтобы ознакомиться с исторической справкой о вкладе женщин в развитие края.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <div onclick="openMapModal('narovlya')" class="bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition cursor-pointer flex flex-col justify-between group transform hover:-translate-y-1">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-heart text-white"></i>
+                                </div>
+                                <span class="bg-white/20 text-white px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">Наш край ⭐</span>
+                                <h3 class="text-2xl font-bold mb-2">Наровля и район</h3>
+                                <p class="text-amber-100 text-sm leading-relaxed">
+                                    Гомельская область. История подвига, трудовой доблести и послевоенного восстановления Наровлянщины.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-white/20 flex items-center justify-between text-xs font-semibold">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="openMapModal('minsk')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">Столица</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Минск</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Центр науки, высшего образования, инноваций и достижений Национальной академии наук Беларуси.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-blue-700">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="openMapModal('polotsk')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-landmark"></i>
+                                </div>
+                                <span class="bg-sky-50 text-sky-700 px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">XII век</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Полоцк</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Колыбель духовности и просвещения, связанная с именем Евфросинии Полоцкой.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-blue-700">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="openMapModal('brest')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <span class="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">Западный форпост</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Брест</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Земля героической памяти, мужества защитников Отечества и современных IT-инициатив.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-blue-700">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="openMapModal('grodno')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-mask"></i>
+                                </div>
+                                <span class="bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">Культура</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Гродно</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Регион с богатыми традициями в театральном искусстве, медицине и университетского образования.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-blue-700">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+
+                        <div onclick="openMapModal('mogilev')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                            <div>
+                                <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-book-open"></i>
+                                </div>
+                                <span class="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider inline-block mb-3">История</span>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Могилев</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Исторический центр Поднепровья, славящийся своими культурными достижениями и традициями.
+                                </p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-blue-700">
+                                <span>Открыть справку</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 2: TIMELINE (Они были первыми) ================= -->
+        <div id="page-timeline" class="page-view hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs uppercase tracking-widest text-blue-700 font-semibold block mb-2">Историческая летопись</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Они были первыми</h2>
+                    <p class="text-slate-600">
+                        Лента времени охватывает ключевые эпохи: от просветительства в Средневековье до подвига в годы Великой Отечественной войны и послевоенного возрождения Наровлянщины.
+                    </p>
+                </div>
+
+                <div class="relative border-l-2 border-slate-200 ml-4 sm:ml-32 space-y-12">
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
+                            <i class="fa-solid fa-book-open text-xs"></i>
+                        </div>
+                        <div class="absolute -left-32 top-2 hidden sm:block text-right w-24">
+                            <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">XII век</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Евфросиния Полоцкая — духовный свет и просвещение</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Первая белорусская женщина-просветительница, монахиня и игумения. Она переписывала книги в келье Софийского собора, открывала школы, больницы, способствовала развитию культуры и зодчества.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-red-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
+                            <i class="fa-solid fa-graduation-cap text-xs"></i>
+                        </div>
+                        <div class="absolute -left-32 top-2 hidden sm:block text-right w-24">
+                            <span class="text-xs font-bold text-red-600 uppercase tracking-wider">XIX век</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Преодоление барьеров: первые женщины-врачи</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                В XIX веке высшее образование для женщин было ограничено. Первые белоруски преодолевали невероятные трудности, чтобы получить медицинские и научные степени, открывая первые земские больницы и школы.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
+                            <i class="fa-solid fa-shield-heart text-xs"></i>
+                        </div>
+                        <div class="absolute -left-32 top-2 hidden sm:block text-right w-24">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">1941–1945</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Зинаида Туснолобова-Марченко и фронтовые медики</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Санинструктор, спасшая сотни бойцов. Тяжело раненая на поле боя, она перенесла ампутацию конечностей, но ее мужественное письмо к фронтовикам стало символом несгибаемой воли и победы над отчаянием.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
+                            <i class="fa-solid fa-house-chimney text-xs"></i>
+                        </div>
+                        <div class="absolute -left-32 top-2 hidden sm:block text-right w-24">
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Послевоенное время</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm border-l-4 border-l-emerald-600">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Женщины-инженеры и педагоги Наровли</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                По архивным материалам краеведческих музеев, после освобождения именно женщины составляли основу восстановления школ, больниц и предприятий Наровлянского района, совершая ежедневный тихий подвиг восстановления мирной жизни.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: MODERN & REGIONS (Героини рядом) ================= -->
+        <div id="page-modern" class="page-view hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs uppercase tracking-widest text-blue-700 font-semibold block mb-2">Современность и регионы</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Героини рядом</h2>
+                    <p class="text-slate-600">
+                        Выдающиеся белорусские женщины современности в науке, спорте, IT и культуре. Используйте фильтры для поиска по регионам и сферам деятельности.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-10 max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Выберите область / регион:</label>
+                            <select id="filter-region" onchange="filterHeroines()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-600">
+                                <option value="all">Все регионы Беларуси</option>
+                                <option value="gomel">Гомельская область (в т.ч. Наровля)</option>
+                                <option value="minsk">Минск и Минская область</option>
+                                <option value="brest">Брестская область</option>
+                                <option value="grodno">Гродненская область</option>
+                                <option value="vitebsk">Витебская область</option>
+                                <option value="mogilev">Могилевская область</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Выберите сферу деятельности:</label>
+                            <select id="filter-sphere" onchange="filterHeroines()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-600">
+                                <option value="all">Все сферы</option>
+                                <option value="science">Наука и образование</option>
+                                <option value="sport">Большой спорт</option>
+                                <option value="it">IT и высокие технологии</option>
+                                <option value="art">Культура и искусство</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="heroines-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: QUIZ (Квиз) ================= -->
+        <div id="page-quiz" class="page-view hidden">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs uppercase tracking-widest text-blue-700 font-semibold block mb-2">Интерактивная проверка знаний</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Квиз: Узнай героиню по факту</h2>
+                    <p class="text-slate-600 text-sm">
+                        Ответьте на 5 вопросов об известных белорусских женщинах и проверьте свои знания по истории и культуре нашей страны.
+                    </p>
+                </div>
+
+                <div id="quiz-box" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-lg relative">
+                    <div class="mb-6">
+                        <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
+                            <span id="quiz-progress-text">Вопрос 1 из 5</span>
+                            <span id="quiz-score-live">Правильно: 0</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" class="h-full bg-blue-600 w-[20%] transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <div id="question-container">
+                        <h3 id="question-title" class="text-lg sm:text-xl font-bold text-slate-900 mb-6 leading-snug">
+                            Загрузка вопроса...
+                        </h3>
+                        <div id="options-container" class="space-y-3"></div>
+                    </div>
+
+                    <div id="quiz-feedback" class="hidden mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm">
+                        <p id="feedback-text" class="mb-4 text-slate-700"></p>
+                        <button onclick="nextQuizQuestion()" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition">
+                            Следующий вопрос
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-results" class="hidden bg-white rounded-2xl p-8 border border-slate-200 shadow-xl text-center">
+                    <div class="w-16 h-16 bg-blue-50 border-2 border-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Тестирование завершено!</h3>
+                    <p id="final-score-text" class="text-slate-600 mb-6 text-lg"></p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="restartQuiz()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl border border-slate-300 transition">
+                            Пройти снова
+                        </button>
+                        <button onclick="switchPage('timeline')" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition">
+                            Изучить материалы
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5: PROJECT REFLECTION (О проекте) ================= -->
+        <div id="page-project" class="page-view hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs uppercase tracking-widest text-blue-700 font-semibold block mb-2">Рефлексия автора и источники</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-3">О проекте</h2>
+                    <p class="text-slate-600 text-sm">
+                        Мотивация выбора темы, методы исследования и использованные архивные материалы.
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-lightbulb text-amber-600"></i>
+                            <span>Актуальность и выбор темы</span>
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Проект «За пределами возможного» создан как цифровой образовательный ресурс, посвященный Году белорусской женщины. Название отражает судьбы женщин, которые вопреки суровым испытаниям истории, гендерным стереотипам или тяжелым травмам совершали выдающиеся поступки.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Особое внимание в работе уделено Наровлянскому району и Гомельской области, поскольку именно локальная история и архивные документы районных музеев и библиотек придают проекту глубину и уникальность.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center space-x-3">
+                            <i class="fa-solid fa-book text-blue-600"></i>
+                            <span>Источники и архивные материалы</span>
+                        </h3>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                                <span>Материалы Наровлянского историко-этнографического музея (фонды послевоенного восстановления).</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                                <span>Публикации районной печати и краеведческие сборники о выдающихся землячках.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-blue-600 mt-1"></i>
+                                <span>Биографические исследования о женщинах-ученых НАН Беларуси, спортсменках и деятелях искусства.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Interactive Region Modal Popup -->
+    <div id="map-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeMapModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-tag" class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold uppercase tracking-wider mb-3 inline-block">Региональная справка</div>
+            <h3 id="modal-title" class="text-2xl font-bold text-slate-900 mb-2">Название города</h3>
+            <p id="modal-subtitle" class="text-xs text-slate-500 font-semibold mb-4">Область • Исторический контекст</p>
+            <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed mb-6">
+                Описание выдающейся женщины и исторической связи с данным регионом.
+            </p>
+            <div class="pt-4 border-t border-slate-200 flex justify-end">
+                <button onclick="closeMapModal(); switchPage('timeline');" class="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-semibold hover:bg-blue-700 transition">
+                    Смотреть в таймлайне
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portal Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="mb-2">Республиканский просветительский портал «За пределами возможного» • Год белорусской женщины</p>
+            <p>Открытый образовательный и краеведческий ресурс.</p>
+        </div>
+    </footer>
+
+    <!-- Application JavaScript -->
+    <script>
+        const mapLocations = {
+            narovlya: {
+                tag: 'Малая родина • Наровлянский район',
+                title: 'Наровля и Наровлянщина',
+                subtitle: 'Гомельская область • Историческое наследие и подвиг',
+                desc: 'Наровлянский край бережно хранит память о мужественных женщинах, которые в годы лихолетий и мирного созидания проявляли стойкость «за пределами возможного». Женщины-труженицы, врачи, партизанки и педагоги восстанавливали родной край из руин после Великой Отечественной войны.'
+            },
+            minsk: {
+                tag: 'Столица • Наука и культура',
+                title: 'Минск и Минская область',
+                subtitle: 'Центр науки и инноваций',
+                desc: 'Столица объединяет выдающихся женщин-ученых Национальной академии наук Беларуси, заслуженных врачей, деятелей культуры и спорта, которые двигают современные технологии и науку вперед.'
+            },
+            polotsk: {
+                tag: 'Духовное наследие • XII век',
+                title: 'Полоцк и Витебская область',
+                subtitle: 'Витебская область • Просвещение',
+                desc: 'Полоцк — колыбель белорусской духовности. Здесь жила и творила Евфросиния Полоцкая, первая белорусская женщина-просветительница, основательница монастырей и меценатка.'
+            },
+            brest: {
+                tag: 'Форпост героизма',
+                title: 'Брест и Брестская область',
+                subtitle: 'Брестская область • Историческая память',
+                desc: 'Земля Брестщины помнит бессмертный подвиг защитников Отечества, в том числе медицинских работников и женщин-инженеров, развивающих региональные инновации.'
+            },
+            grodno: {
+                tag: 'Интеллект и творчество',
+                title: 'Гродно и Гродненская область',
+                subtitle: 'Гродненская область • Культура и медицина',
+                desc: 'Гродно славится своими традициями в сфере театрального искусства, медицины и университетского образования.'
+            },
+            mogilev: {
+                tag: 'Исторический центр',
+                title: 'Могилев и Могилевская область',
+                subtitle: 'Могилевская область • Традиции и созидание',
+                desc: 'Могилевщина славится своими культурными достижениями, героическим прошлым и значительным вкладом женщин в развитие региона.'
+            }
+        };
+
+        function openMapModal(key) {
+            const data = mapLocations[key];
+            if (!data) return;
+            document.getElementById('modal-tag').innerText = data.tag;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-subtitle').innerText = data.subtitle;
+            document.getElementById('modal-desc').innerText = data.desc;
+            const modal = document.getElementById('map-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeMapModal() {
+            const modal = document.getElementById('map-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        const heroinesData = [
+            {
+                name: 'Дарья Тишкевич',
+                sphere: 'science',
+                region: 'minsk',
+                sphereName: 'Наука и образование',
+                regionName: 'Минск',
+                desc: 'Кандидат наук, лауреат премии Союзного государства для молодых учёных. Исследует материалы для радиационной защиты и сверхчувствительные магнитные сенсоры для биомедицины.',
+                fact: 'Лауреат премии Союзного государства.'
+            },
+            {
+                name: 'Эмилия Коломиец',
+                sphere: 'science',
+                region: 'minsk',
+                sphereName: 'Наука и образование',
+                regionName: 'Минск / НАН Беларуси',
+                desc: 'Академик НАН Беларуси, микробиолог. Генеральный директор ГНПО «Химический синтез и биотехнологии», занимается биотехнологиями для защиты растений.',
+                fact: 'Генеральный директор крупного научного объединения.'
+            },
+            {
+                name: 'Любовь Хотылева',
+                sphere: 'science',
+                region: 'minsk',
+                sphereName: 'Наука и образование',
+                regionName: 'Минск / НАН Беларуси',
+                desc: 'Академик НАН Беларуси (с 1980 г.), генетик растений. Более 70 лет в науке, почти четверть века возглавляла Институт генетики и цитологии. Соавтор высокоурожайных сортов тритикале, томатов, перца и капусты.',
+                fact: 'Более 70 лет преданного служению науке.'
+            },
+            {
+                name: 'Анна Панкратова',
+                sphere: 'science',
+                region: 'minsk',
+                sphereName: 'Наука и образование',
+                regionName: 'Минск',
+                desc: 'Академик АН БССР (с 1940 г.), историк. Занималась историей рабочего класса, представляла СССР на международных научных форумах.',
+                fact: 'Выдающийся академик исторической науки.'
+            },
+            {
+                name: 'Анна Ковалева',
+                sphere: 'science',
+                region: 'gomel',
+                sphereName: 'Наука и образование',
+                regionName: 'Гомельская область (Наровля)',
+                desc: 'Талантливый педагог и краевед Наровлянщины, посвятившая жизнь сохранению памяти о героических земляках и воспитанию молодежи.',
+                fact: 'Местные историко-краеведческие инициативы.'
+            },
+            {
+                name: 'Анна Гуськова',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Фристайл (лыжная акробатика). Олимпийская чемпионка 2018 года, серебряный призёр Олимпиады-2022. Участница четырёх Олимпиад.',
+                fact: 'Олимпийская чемпионка и призер Игр.'
+            },
+            {
+                name: 'Анастасия Андриянова',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Фристайл (лыжная акробатика). Участница Олимпийских игр 2026 года в Италии.',
+                fact: 'Участница Олимпиады 2026.'
+            },
+            {
+                name: 'Анна Деруго',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Фристайл (лыжная акробатика). Успешная спортсменка, участница Олимпийских игр 2026 года.',
+                fact: 'Участница Олимпиады 2026.'
+            },
+            {
+                name: 'Мария Шканова',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Горнолыжный спорт. Опытная спортсменка, участница Олимпийских игр 2026 года.',
+                fact: 'Мастер горнолыжного спорта.'
+            },
+            {
+                name: 'Марина Зуева',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Конькобежный спорт. Лидер сборной, участница Олимпийских игр 2026 года.',
+                fact: 'Мастер конькобежного спорта.'
+            },
+            {
+                name: 'Анна Королева',
+                sphere: 'sport',
+                region: 'vitebsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Витебская область',
+                desc: 'Лыжные гонки. Успешно представляет страну на международной арене, участница Олимпийских игр 2026 года.',
+                fact: 'Участница Олимпиады 2026.'
+            },
+            {
+                name: 'Виктория Сафонова',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Фигурное катание. Яркая представительница одиночного катания, участница Олимпийских игр 2026 года.',
+                fact: 'Участница Олимпиады 2026.'
+            },
+            {
+                name: 'Алина Змушко',
+                sphere: 'sport',
+                region: 'gomel',
+                sphereName: 'Большой спорт',
+                regionName: 'Гомельская область',
+                desc: 'Плавание. Призёр чемпионата мира, участница двух Олимпиад. Номинант на Премию НОК Беларуси 2025 в категории «Прорыв года».',
+                fact: 'Призёр чемпионата мира по плаванию.'
+            },
+            {
+                name: 'Василина Хондошко',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Синхронное плавание. Многократная призёрка чемпионатов мира и Европы, участница Олимпиады. Номинант на Премию НОК Беларуси 2025 в категории «Лучшая спортсменка».',
+                fact: 'Многократный призёр чемпионатов Европы и мира.'
+            },
+            {
+                name: 'Елена Белова',
+                sphere: 'sport',
+                region: 'minsk',
+                sphereName: 'Большой спорт',
+                regionName: 'Минск',
+                desc: 'Легендарная белорусская фехтовальщица, многократная олимпийская чемпионка.',
+                fact: 'Обладательница четырех золотых олимпийских медалей.'
+            },
+            {
+                name: 'Анжела Шевцова',
+                sphere: 'it',
+                region: 'minsk',
+                sphereName: 'IT и высокие технологии',
+                regionName: 'Минск',
+                desc: 'Начальник отдела систем автоматизированного проектирования в ОАО «НИИЭВМ». Участвовала в разработке защищённых носимых ПЭВМ, имеет патенты на ЭВМ и видеомониторы.',
+                fact: 'Имеет официальные патенты на ЭВМ и видеомониторы.'
+            },
+            {
+                name: 'Виктория (Старший программист C++)',
+                sphere: 'it',
+                region: 'brest',
+                sphereName: 'IT и высокие технологии',
+                regionName: 'Брестская область',
+                desc: 'Старший программист C++. Переучилась с химии на IT, за пять лет выросла до старшего разработчика. Работает в сильной технической команде.',
+                fact: 'Успешный переход из классической науки в IT.'
+            },
+            {
+                name: 'Яна (Тимлид разработки)',
+                sphere: 'it',
+                region: 'minsk',
+                sphereName: 'IT и высокие технологии',
+                regionName: 'Минск',
+                desc: 'В 26 лет управляет командой из 35 человек. Начинала с факультета информационного менеджмента, курсов и стажировок.',
+                fact: 'Успешный руководитель крупного IT-отдела.'
+            },
+            {
+                name: 'Инна Прокопенко',
+                sphere: 'it',
+                region: 'brest',
+                sphereName: 'IT и высокие технологии',
+                regionName: 'Брестская область',
+                desc: 'Ведущий белорусский инженер-разработчик в сфере искусственного интеллекта и цифровых инноваций.',
+                fact: 'Руководитель технологических проектов.'
+            },
+            {
+                name: 'Вера Полякова-Макей',
+                sphere: 'art',
+                region: 'minsk',
+                sphereName: 'Культура и искусство',
+                regionName: 'Минск',
+                desc: 'Заслуженная артистка Республики Беларусь, актриса театра и кино, певица, телеведущая. С 2022 года — директор Театра юного зрителя.',
+                fact: 'Директор ТЮЗа и заслуженная артистка.'
+            },
+            {
+                name: 'Лариса Микулич',
+                sphere: 'art',
+                region: 'grodno',
+                sphereName: 'Культура и искусство',
+                regionName: 'Гродненская область',
+                desc: 'Актриса Гродненского областного театра кукол. За годы карьеры сыграла сотни запоминающихся ролей.',
+                fact: 'Легенда кукольного театра Гродненщины.'
+            },
+            {
+                name: 'Евгения Пограничная',
+                sphere: 'art',
+                region: 'minsk',
+                sphereName: 'Культура и искусство',
+                regionName: 'Минск',
+                desc: 'Автор официального логотипа «Года белорусской женщины», талантливый фотограф, руководитель молодёжного крыла Белорусского союза женщин.',
+                fact: 'Создатель визуального символа Года женщины.'
+            },
+            {
+                name: 'Светлана Алексиевич',
+                sphere: 'art',
+                region: 'gomel',
+                sphereName: 'Культура и искусство',
+                regionName: 'Гомельская область',
+                desc: 'Лауреат Нобелевской премии по литературе, пронзительно раскрывающая тему человеческого мужества.',
+                fact: 'Первый нобелевский лауреат в истории Беларуси.'
+            },
+            {
+                name: 'Марина Василевская',
+                sphere: 'science',
+                region: 'minsk',
+                sphereName: 'Наука и образование',
+                regionName: 'Минск / Нация',
+                desc: 'Первая женщина-космонавт в истории суверенной Беларуси, совершившая полет на Международную космическую станцию и проведшая сложнейшие исследования.',
+                fact: 'Успешный космический полет и научная программа.'
+            },
+            {
+                name: 'Ольга Корбут',
+                sphere: 'sport',
+                region: 'grodno',
+                sphereName: 'Большой спорт',
+                regionName: 'Гродненская область',
+                desc: 'Знаменитая гимнастка, чьи невероятные элементы («Петля Корбут») навсегда изменили мировой спортивный арсенал.',
+                fact: 'Четырехкратная олимпийская чемпионка.'
+            }
+        ];
+
+        function renderHeroines(list) {
+            const grid = document.getElementById('heroines-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            if (list.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500">По вашему запросу героинь не найдено. Попробуйте изменить фильтры.</div>';
+                return;
+            }
+            list.forEach(h => {
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="px-2.5 py-1 bg-slate-100 text-blue-700 text-xs font-semibold rounded-lg">${h.sphereName}</span>
+                                <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-location-dot mr-1"></i>${h.regionName}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${h.name}</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">${h.desc}</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 text-xs text-slate-500 flex items-center space-x-2">
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <span>${h.fact}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterHeroines() {
+            const regElem = document.getElementById('filter-region');
+            const sphElem = document.getElementById('filter-sphere');
+            if (!regElem || !sphElem) return;
+            
+            const reg = regElem.value;
+            const sph = sphElem.value;
+            let filtered = heroinesData;
+            if (reg !== 'all') {
+                filtered = filtered.filter(h => h.region === reg);
+            }
+            if (sph !== 'all') {
+                filtered = filtered.filter(h => h.sphere === sph);
+            }
+            renderHeroines(filtered);
+        }
+
+        const quizQuestions = [
+            {
+                question: 'Какая известная белорусская женщина в XII веке основала монастыри и просветительскую школу в Полоцке?',
+                options: [
+                    'Евфросиния Полоцкая',
+                    'Барбара Радзивилл',
+                    'Софья Слуцкая',
+                    'Анна Панкратова'
+                ],
+                answer: 0,
+                fact: 'Евфросиния Полоцкая — первая белорусская просветительница и святая.'
+            },
+            {
+                question: 'Какая белорусская спортсменка стала олимпийской чемпионкой 2018 года по фристайлу (лыжная акробатика)?',
+                options: [
+                    'Анна Гуськова',
+                    'Марина Зуева',
+                    'Алина Змушко',
+                    'Василина Хондошко'
+                ],
+                answer: 0,
+                fact: 'Анна Гуськова — триумфатор Олимпийских игр.'
+            },
+            {
+                question: 'Кто из белорусских ученых является академиком НАН Беларуси, микробиологом и возглавляет ГНПО «Химический синтез и биотехнологии»?',
+                options: [
+                    'Эмилия Коломиец',
+                    'Дарья Тишкевич',
+                    'Инна Прокопенко',
+                    'Анжела Шевцова'
+                ],
+                answer: 0,
+                fact: 'Эмилия Коломиец руководит передовыми биотехнологическими исследованиями.'
+            },
+            {
+                question: 'Какая белорусская писательница удостоена Нобелевской премии по литературе?',
+                options: [
+                    'Ада Ружич',
+                    'Светлана Алексиевич',
+                    'Ирина Шамякина',
+                    'Евгения Янищиц'
+                ],
+                answer: 1,
+                fact: 'Светлана Алексиевич получила Нобелевскую премию за документально-прозаическое творчество.'
+            },
+            {
+                question: 'Какая белоруска первой в истории суверенной страны совершила полет в космос на МКС?',
+                options: [
+                    'Марина Василевская',
+                    'Елена Белова',
+                    'Ольга Корбут',
+                    'Алина Змушко'
+                ],
+                answer: 0,
+                fact: 'Марина Василевская успешно выполнила научную программу на орбите.'
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+
+        function loadQuizQuestion() {
+            const progressText = document.getElementById('quiz-progress-text');
+            if (!progressText) return;
+
+            const q = quizQuestions[currentQuestionIndex];
+            progressText.innerText = `Вопрос ${currentQuestionIndex + 1} из ${quizQuestions.length}`;
+            document.getElementById('quiz-score-live').innerText = `Правильно: ${quizScore}`;
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%`;
+            document.getElementById('question-title').innerText = q.question;
+
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                optContainer.innerHTML += `
+                    <button onclick="checkQuizAnswer(${idx})" class="w-full text-left p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-600 text-slate-800 text-sm font-medium transition flex items-center justify-between group">
+                        <span>${opt}</span>
+                        <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs group-hover:border-blue-600 group-hover:text-blue-600">✓</span>
+                    </button>
+                `;
+            });
+            document.getElementById('quiz-feedback').classList.add('hidden');
+        }
+
+        function checkQuizAnswer(selectedIdx) {
+            const q = quizQuestions[currentQuestionIndex];
+            const feedbackBox = document.getElementById('quiz-feedback');
+            const feedbackText = document.getElementById('feedback-text');
+
+            const optButtons = document.getElementById('options-container').children;
+            for (let i = 0; i < optButtons.length; i++) {
+                optButtons[i].disabled = true;
+                if (i === q.answer) {
+                    optButtons[i].classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
+                } else if (i === selectedIdx) {
+                    optButtons[i].classList.add('bg-red-50', 'border-red-500', 'text-red-900');
+                }
+            }
+
+            if (selectedIdx === q.answer) {
+                quizScore++;
+                feedbackText.innerHTML = `<strong class="text-emerald-700">Верно!</strong> ${q.fact}`;
+            } else {
+                feedbackText.innerHTML = `<strong class="text-red-700">Не совсем так.</strong> Правильный ответ: "${q.options[q.answer]}". ${q.fact}`;
+            }
+
+            document.getElementById('quiz-score-live').innerText = `Правильно: ${quizScore}`;
+            feedbackBox.classList.remove('hidden');
+        }
+
+        function nextQuizQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                document.getElementById('quiz-box').classList.add('hidden');
+                const resBox = document.getElementById('quiz-results');
+                resBox.classList.remove('hidden');
+                document.getElementById('final-score-text').innerText = `Вы ответили правильно на ${quizScore} из ${quizQuestions.length} вопросов. Отличный результат!`;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-box').classList.remove('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            loadQuizQuestion();
+        }
+
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-blue-700', 'bg-blue-50');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-600');
+                activeNav.classList.add('text-blue-700', 'bg-blue-50');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        window.onload = function() {
+            renderHeroines(heroinesData);
+            loadQuizQuestion();
+        };
+    </script>
+</body>
+</html>
