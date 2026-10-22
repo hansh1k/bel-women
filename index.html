@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>За пределами возможного — Год белорусской женщины</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,9 +25,7 @@
             }
         }
     </script>
-    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
@@ -56,12 +53,9 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-blue-100 selection:text-blue-900">
-
-    <!-- Header & Portal Navigation -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Portal Brand / Logo -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-700 to-red-600 flex items-center justify-center shadow-md text-white font-bold">
                         <i class="fa-solid fa-bookmark"></i>
@@ -71,8 +65,6 @@
                         <span class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Год белорусской женщины</span>
                     </div>
                 </div>
-
-                <!-- Desktop Navigation Menu -->
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                     <button onclick="switchPage('home')" id="nav-home" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-blue-700 bg-blue-50">Главная</button>
                     <button onclick="switchPage('timeline')" id="nav-timeline" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">Они были первыми</button>
@@ -80,8 +72,6 @@
                     <button onclick="switchPage('quiz')" id="nav-quiz" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">Квиз</button>
                     <button onclick="switchPage('project')" id="nav-project" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all text-slate-600 hover:text-blue-700 hover:bg-slate-50">О проекте</button>
                 </nav>
-
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
                         <i class="fa-solid fa-bars text-xl"></i>
@@ -89,8 +79,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-lg">
             <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-blue-700 bg-blue-50">Главная</button>
             <button onclick="switchPage('timeline'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">Они были первыми</button>
@@ -99,11 +87,7 @@
             <button onclick="switchPage('project'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50">О проекте</button>
         </div>
     </header>
-
-    <!-- Main Content Dynamic Views Container -->
     <main class="flex-grow">
-
-        <!-- ================= PAGE 1: HOME ================= -->
         <div id="page-home" class="page-view">
             <section class="py-16 lg:py-24 bg-gradient-to-b from-blue-900 via-slate-900 to-slate-900 text-white relative overflow-hidden">
                 <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
@@ -132,8 +116,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Regions Panel -->
             <section class="py-16 sm:py-24 bg-white border-b border-slate-200">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -143,7 +125,6 @@
                             Выберите интересующий вас регион или город ниже, чтобы ознакомиться с исторической справкой о вкладе женщин в развитие края.
                         </p>
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                         <div onclick="openMapModal('narovlya')" class="bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition cursor-pointer flex flex-col justify-between group transform hover:-translate-y-1">
                             <div>
@@ -161,7 +142,6 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                         <div onclick="openMapModal('minsk')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
                             <div>
                                 <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
@@ -178,7 +158,6 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                         <div onclick="openMapModal('polotsk')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
                             <div>
                                 <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
@@ -195,7 +174,6 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                         <div onclick="openMapModal('brest')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
                             <div>
                                 <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
@@ -212,7 +190,6 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                         <div onclick="openMapModal('grodno')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
                             <div>
                                 <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
@@ -229,7 +206,6 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
-
                         <div onclick="openMapModal('mogilev')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
                             <div>
                                 <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
@@ -249,9 +225,7 @@
                     </div>
                 </div>
             </section>
-        </div>
-
-        <!-- ================= PAGE 2: TIMELINE (Они были первыми) ================= -->
+        </div> 
         <div id="page-timeline" class="page-view hidden">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                 <div class="text-center max-w-2xl mx-auto mb-16">
@@ -261,7 +235,6 @@
                         Лента времени охватывает ключевые эпохи: от просветительства в Средневековье до подвига в годы Великой Отечественной войны и послевоенного возрождения Наровлянщины.
                     </p>
                 </div>
-
                 <div class="relative border-l-2 border-slate-200 ml-4 sm:ml-32 space-y-12">
                     <div class="relative pl-8 sm:pl-10">
                         <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
@@ -277,7 +250,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="relative pl-8 sm:pl-10">
                         <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-red-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
                             <i class="fa-solid fa-graduation-cap text-xs"></i>
@@ -292,7 +264,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="relative pl-8 sm:pl-10">
                         <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
                             <i class="fa-solid fa-shield-heart text-xs"></i>
@@ -307,7 +278,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="relative pl-8 sm:pl-10">
                         <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shadow-md border-4 border-white">
                             <i class="fa-solid fa-house-chimney text-xs"></i>
@@ -325,8 +295,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- ================= PAGE 3: MODERN & REGIONS (Героини рядом) ================= -->
         <div id="page-modern" class="page-view hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -336,7 +304,6 @@
                         Выдающиеся белорусские женщины современности в науке, спорте, IT и культуре. Используйте фильтры для поиска по регионам и сферам деятельности.
                     </p>
                 </div>
-
                 <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-10 max-w-4xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -367,8 +334,6 @@
                 <div id="heroines-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </div>
-
-        <!-- ================= PAGE 4: QUIZ (Квиз) ================= -->
         <div id="page-quiz" class="page-view hidden">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                 <div class="text-center max-w-2xl mx-auto mb-10">
@@ -378,7 +343,6 @@
                         Ответьте на 5 вопросов об известных белорусских женщинах и проверьте свои знания по истории и культуре нашей страны.
                     </p>
                 </div>
-
                 <div id="quiz-box" class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-lg relative">
                     <div class="mb-6">
                         <div class="flex justify-between text-xs font-semibold text-slate-500 mb-2">
@@ -389,14 +353,12 @@
                             <div id="quiz-progress-bar" class="h-full bg-blue-600 w-[20%] transition-all duration-300"></div>
                         </div>
                     </div>
-
                     <div id="question-container">
                         <h3 id="question-title" class="text-lg sm:text-xl font-bold text-slate-900 mb-6 leading-snug">
                             Загрузка вопроса...
                         </h3>
                         <div id="options-container" class="space-y-3"></div>
                     </div>
-
                     <div id="quiz-feedback" class="hidden mt-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm">
                         <p id="feedback-text" class="mb-4 text-slate-700"></p>
                         <button onclick="nextQuizQuestion()" class="w-full py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition">
@@ -404,7 +366,6 @@
                         </button>
                     </div>
                 </div>
-
                 <div id="quiz-results" class="hidden bg-white rounded-2xl p-8 border border-slate-200 shadow-xl text-center">
                     <div class="w-16 h-16 bg-blue-50 border-2 border-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
                         <i class="fa-solid fa-award"></i>
@@ -423,7 +384,6 @@
             </div>
         </div>
 
-        <!-- ================= PAGE 5: PROJECT REFLECTION (О проекте) ================= -->
         <div id="page-project" class="page-view hidden">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                 <div class="text-center max-w-2xl mx-auto mb-12">
@@ -474,7 +434,6 @@
 
     </main>
 
-    <!-- Interactive Region Modal Popup -->
     <div id="map-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
             <button onclick="closeMapModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition">
@@ -494,7 +453,6 @@
         </div>
     </div>
 
-    <!-- Portal Footer -->
     <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="mb-2">Республиканский просветительский портал «За пределами возможного» • Год белорусской женщины</p>
@@ -502,7 +460,6 @@
         </div>
     </footer>
 
-    <!-- Application JavaScript -->
     <script>
         const mapLocations = {
             narovlya: {
@@ -759,15 +716,6 @@
                 regionName: 'Минск',
                 desc: 'Автор официального логотипа «Года белорусской женщины», талантливый фотограф, руководитель молодёжного крыла Белорусского союза женщин.',
                 fact: 'Создатель визуального символа Года женщины.'
-            },
-            {
-                name: 'Светлана Алексиевич',
-                sphere: 'art',
-                region: 'gomel',
-                sphereName: 'Культура и искусство',
-                regionName: 'Гомельская область',
-                desc: 'Лауреат Нобелевской премии по литературе, пронзительно раскрывающая тему человеческого мужества.',
-                fact: 'Первый нобелевский лауреат в истории Беларуси.'
             },
             {
                 name: 'Марина Василевская',
